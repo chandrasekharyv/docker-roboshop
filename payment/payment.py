@@ -62,13 +62,13 @@ def pay(id):
     anonymous_user = True
 
     # add some log info to the active trace
-    span = ot.tracer.active_span
-    span.log_kv({'id': id})
-    span.log_kv({'cart': cart})
+    # span = ot.tracer.active_span
+    # span.log_kv({'id': id})
+    # span.log_kv({'cart': cart})
 
     # check user exists
     try:
-        req = requests.get('http://{user}:{userPort}/check/{id}'.format(user=USER, userPort=USER_PORT, id=id))
+        req = requests.get('http://{user}:8080/check/{id}'.format(user=USER, userPort=USER_PORT, id=id))
     except requests.exceptions.RequestException as err:
         app.logger.error(err)
         return str(err), 500
