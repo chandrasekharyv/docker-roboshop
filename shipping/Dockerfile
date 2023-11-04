@@ -1,7 +1,8 @@
 #
 # Multi-stage Build
 
-FROM debian:10 AS build
+# FROM debian:10 AS build
+FROM maven AS build
 
 RUN apt-get update -y && apt-get -y install maven
 
